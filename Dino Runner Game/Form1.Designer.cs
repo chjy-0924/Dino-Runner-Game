@@ -100,7 +100,7 @@
             // 
             obstacle3.BackColor = Color.Transparent;
             obstacle3.Image = Properties.Resources.flying;
-            obstacle3.Location = new Point(656, 364);
+            obstacle3.Location = new Point(656, 290);
             obstacle3.Name = "obstacle3";
             obstacle3.Size = new Size(67, 40);
             obstacle3.SizeMode = PictureBoxSizeMode.StretchImage;

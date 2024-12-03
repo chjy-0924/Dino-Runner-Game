@@ -7,14 +7,23 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>Dino_Runner_Game.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="font\pixel.ttf" />
+    <None Remove="Resources\hit.wav" />
+    <None Remove="Resources\plusone.wav" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="font\pixel.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\hit.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\plusone.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

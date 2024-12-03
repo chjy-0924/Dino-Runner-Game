@@ -21,7 +21,7 @@ namespace Dino_Runner_Game
         int score = 0;
         int speed = 10;
 
-        int[] flyingPosition = { 276, 350, 276, 350 };
+        int[] flyingPosition = { 290, 363, 290, 363 };
 
         bool jumping = false;
         bool changeAnim = false;
@@ -117,6 +117,19 @@ namespace Dino_Runner_Game
             }
 
             // do the collision testing here
+
+            foreach (PictureBox x in obstacles)
+            {
+                if (x.Bounds.IntersectsWith(hitBox.Bounds))
+                {
+                    GameTimer.Stop();
+                    Dino.Image = Properties.Resources.dead;
+                    gameover = true;
+                    SoundPlayer hitSound = new SoundPlayer(Properties.Resources.hit);
+                    hitSound.Play();
+                    Dino.Top = 313;
+                }
+            }
         }
 
         private void GameSetUp()
@@ -140,12 +153,12 @@ namespace Dino_Runner_Game
             lblScore.BackColor = Color.Transparent;
             lblScore.Text = "Score: 0";
 
-            hitBox.BackColor = Color.Red;
+            hitBox.BackColor = Color.Transparent;
             hitBox.Width = Dino.Width / 2;
             hitBox.Height = Dino.Height - 10;
 
             this.Controls.Add(hitBox);
-            hitBox.BringToFront();
+            //hitBox.BringToFront();
             gameover = false;
 
             attackR = random.Next(12, 20);
@@ -189,8 +202,7 @@ namespace Dino_Runner_Game
 
         private void MoveObstacles()
         {
-            plusOneSound = new SoundPlayer(Properties.Resources.plusone);
-
+            SoundPlayer plusOneSound = new SoundPlayer(Properties.Resources.plusone);
             if (!flyingAttack)
             {
                 obstacle1.Left -= cactusSpeed;
@@ -217,7 +229,7 @@ namespace Dino_Runner_Game
                 obstacle1.Left = obstacle2.Left + obstacle2.Width + formWidth + random.Next(100, 300);
                 attackTimer += 1;
                 score += 1;
-                plusOneSound.Play();
+               plusOneSound.Play();
             }
 
             if (obstacle2.Left < -100)
